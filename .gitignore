@@ -1,0 +1,31 @@
+@"
+# Maven
+target/
+*.class
+*.jar
+*.war
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Output artifacts (do NOT commit; users regenerate)
+/output/
+
+# Local data (Kaggle CSVs - too large + licensing) - root only
+/data/
+*.csv
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local env
+.env
+"@ | Out-File -Encoding utf8 .gitignore

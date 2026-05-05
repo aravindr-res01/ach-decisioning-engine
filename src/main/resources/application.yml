@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  application:
+    name: ach-decisioning
+  main:
+    banner-mode: "off"
+
+# AI-driven ACH decisioning service configuration
+ach:
+  decisioning:
+    # Calibrated thresholds (per-task; tuned on validation split).
+    # Production deployments must re-calibrate monthly via MRM-approved process.
+    fraud-threshold:      0.15
+    compliance-threshold: 0.20
+    any-return-threshold: 0.30
+
+    # Model artifact paths (consumed by DecisioningService at startup)
+    model-artifact-path:  model/mtl-mlp.json
+    scaler-path:          model/scaler.json
+
+logging:
+  level:
+    root: INFO
+    com.ach.research: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
